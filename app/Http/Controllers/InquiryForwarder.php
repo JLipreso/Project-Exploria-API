@@ -19,6 +19,8 @@ class InquiryForwarder extends Controller
         $email      = $request['email'];
         $message    = $request['message'];
 
+        $forwardTo  = "jason.foxcityph@gmail.com";
+
         try {
             $subject    = 'Web Inquiry';
             $content    = '<div style="font-family: sans-serif; width: 100%;height: 100%;background: #e8eff1;position: absolute;">
@@ -40,10 +42,10 @@ class InquiryForwarder extends Controller
                                 </div>
                             </div>
                         </div>';
-            Mail::html($content, function ($message) use($email, $subject) { $message->to($email)->subject($subject); });
+            Mail::html($content, function ($message) use($forwardTo, $subject) { $message->to($forwardTo)->subject($subject); });
             return [
                 "success"   => true,
-                "message"   => "Booking Contract sent"
+                "message"   => ""
             ];
         }
         catch(\Exception $e) {
