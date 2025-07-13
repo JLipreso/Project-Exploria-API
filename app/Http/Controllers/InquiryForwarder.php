@@ -45,7 +45,7 @@ class InquiryForwarder extends Controller
             Mail::html($content, function ($message) use($forwardTo, $subject) { $message->to($forwardTo)->subject($subject); });
             return [
                 "success"   => true,
-                "message"   => ""
+                "message"   => "Message sent"
             ];
         }
         catch(\Exception $e) {
