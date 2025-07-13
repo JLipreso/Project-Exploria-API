@@ -42,7 +42,9 @@ class InquiryForwarder extends Controller
                                 </div>
                             </div>
                         </div>';
-            Mail::html($content, function ($message) use($forwardTo, $subject) { $message->to($forwardTo)->subject($subject); });
+            Mail::html($content, function ($message) use ($subject) {
+                $message->to(["jasonlipreso@gmail.com", "operations@exploriatravel.com"])->subject($subject);
+            });
             return [
                 "success"   => true,
                 "message"   => "Message sent"
